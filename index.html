@@ -70,306 +70,494 @@
 
 
 
-	
+
+
     <style>
-        /* Soft & Professional Palette */
-        :root {
-            --color-primary: #0070f3; /* Trustworthy Blue */
-            --color-secondary: #005bb5;
-            --color-background: #f0f4f8; /* Light Sky Gray */
-            --color-text: #333;
-            --color-heading: #1e3a8a; /* Deep Blue Heading */
-            --color-accent: #f9a825; /* Gold Accent */
-            --color-light: #fff;
-        }
-        body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.7; margin: 0; padding: 0; background: var(--color-background); color: var(--color-text); }
-        header, section, footer { max-width: 1000px; margin: 25px auto; padding: 25px; background: var(--color-light); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        h1 { color: var(--color-heading); font-size: 2.5rem; text-align: center; font-weight: 900; margin-bottom: 5px; }
-        h2 { color: var(--color-secondary); border-bottom: 3px solid var(--color-background); padding-bottom: 10px; margin-top: 30px; font-weight: 700; font-size: 1.8rem; }
-        h3 { color: var(--color-primary); font-size: 1.4rem; margin-top: 20px; }
-        a { color: var(--color-primary); text-decoration: none; }
-        a:hover { text-decoration: underline; color: var(--color-secondary); }
-        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        th, td { border: none; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: var(--color-primary); color: var(--color-light); font-weight: 700; text-align: center; }
-        tr:nth-child(even) { background: #f7f9fc; }
-        li { margin-bottom: 10px; }
-        
-        /* CTA Button - Prominent & Engaging */
+        /* 기본 스타일 */
+        body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f7f6; color: #333; }
+        header, section, footer { max-width: 900px; margin: 20px auto; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        h1, h2, h3 { color: #004aad; font-weight: 700; }
+        h1 { font-size: 2.5em; text-align: center; margin-bottom: 10px; }
+        h2 { font-size: 2em; margin-top: 30px; border-left: 5px solid #004aad; padding-left: 15px; }
+        h3 { font-size: 1.5em; color: #0070f3; margin-top: 25px; }
+        p { margin-bottom: 15px; font-size: 1.05em; line-height: 1.7; }
+        ul, ol { padding-left: 25px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; font-size: 1.05em; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 1em; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: middle; }
+        th { background: #eef4f8; color: #004aad; font-weight: 700; text-align: center; }
+        td { background: #fbfdff; }
+        a { color: #0070f3; text-decoration: none; transition: color 0.3s; }
+        a:hover { text-decoration: underline; color: #005bb5; }
+
+        /* CTA 버튼 */
         .btn-cta {
-            display: block;
-            width: 80%; /* Adjusted for better flow */
-            max-width: 400px;
-            margin: 20px auto;
+            display: inline-block;
             padding: 15px 30px;
-            background: var(--color-accent);
-            color: var(--color-heading);
-            font-weight: 900;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            box-shadow: 0 6px 15px rgba(249, 168, 37, 0.5);
-            transition: all 0.3s ease;
+            background: #0070f3;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 40px;
+            box-shadow: 0 6px 15px rgba(0, 112, 243, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: center;
-            border: none;
+            margin-top: 20px;
             cursor: pointer;
-        }
-        .btn-cta:hover {
-            background: #ffb74d; /* Lighter Gold */
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(249, 168, 37, 0.7);
+            border: none;
+            font-size: 1.1em;
             text-decoration: none;
         }
-        /* Form Styling */
-        form label { font-weight: 700; display: block; margin-top: 10px; color: var(--color-heading); }
-        form input[type="text"], form input[type="tel"], form input[type="email"], form select, form textarea {
+        .btn-cta:hover {
+            background: #005bb5;
+            transform: translateY(-2px);
+        }
+
+        /* 이미지 스타일 */
+        img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+
+        /* 내부 링크용 앵커 스타일 */
+        .anchor { display: block; position: relative; top: -100px; visibility: hidden; }
+
+        /* 카드 비교 테이블 스타일 */
+        .comparison-table { margin-bottom: 30px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .comparison-table th { background: #004aad; color: #fff; text-align: center; padding: 15px; }
+        .comparison-table td { background: #f9f9f9; text-align: center; font-size: 0.95em; line-height: 1.4; }
+        .comparison-table tr:nth-child(even) td { background: #ffffff; }
+
+        /* 하이라이트 박스 */
+        .highlight-box { background: #eef8ff; border-left: 5px solid #0070f3; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .highlight-box strong { color: #004aad; font-weight: 700; }
+
+        /* 반응형 */
+        @media(max-width: 768px) {
+            header, section, footer { margin: 10px auto; padding: 20px; }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+            .btn-cta { width: 100%; padding: 15px 0; }
+            .comparison-table th, .comparison-table td { font-size: 0.9em; padding: 10px; }
+            ul, ol { padding-left: 20px; }
+        }
+        @media(max-width: 600px) {
+            header, section, footer { margin: 10px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.6em; }
+            h3 { font-size: 1.2em; }
+            .btn-cta { font-size: 1em; }
+        }
+        /* 추가 스타일: 폼 요소 */
+        .form-section label { display: block; margin-bottom: 5px; font-weight: 700; color: #004aad; }
+        .form-section input[type="text"], .form-section input[type="tel"], .form-section select, .form-section textarea {
             width: 100%;
             padding: 12px;
-            margin-top: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 6px;
             box-sizing: border-box;
-            transition: border-color 0.3s;
+            font-size: 1em;
         }
-        form input:focus, form select:focus, form textarea:focus { border-color: var(--color-primary); outline: none; box-shadow: 0 0 5px rgba(0, 112, 243, 0.2); }
-        .form-group { margin-bottom: 15px; }
-        .anchor { display: block; position: relative; top: -80px; visibility: hidden; }
+        .form-section input[type="radio"], .form-section input[type="checkbox"] { margin-right: 8px; }
+        .form-group { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .form-group legend { font-weight: 700; color: #0070f3; margin-bottom: 10px; display: block; font-size: 1.1em; }
 
-        /* Responsive Layout */
+        /* 네비게이션 스타일 */
+        nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; background: #eef8ff; border-radius: 8px; margin: 20px auto; box-shadow: none; }
+        nav li { margin: 8px 15px; }
+        nav li a { padding: 10px 15px; border-radius: 6px; font-weight: 700; color: #004aad; transition: background-color 0.3s; }
+        nav li a:hover { background: #dceefc; text-decoration: none; }
         @media(max-width: 768px) {
-            header, section, footer { margin: 15px auto; padding: 15px; }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            .btn-cta { width: 90%; padding: 12px 20px; }
-            th, td { padding: 10px; display: block; width: 100%; box-sizing: border-box; }
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; } /* Hide table header on mobile */
-            td:before { content: attr(data-label); float: left; font-weight: bold; margin-right: 10px; color: var(--color-secondary); }
+            nav ul { justify-content: flex-start; }
+            nav li { margin: 5px 10px; }
+        }
+
+        /* 통계 그래프 Placeholder 스타일 */
+        .graph-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            border: 1px solid #ddd;
+            font-size: 1.2em;
         }
     </style>
 
+    <!-- Schema.org FAQPage 마크업(JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "자동차보험을 카드로 결제하면 어떤 장점이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "자동차보험료는 한 번에 납부하는 금액이 크기 때문에, 카드사에서 제공하는 할인 혜택을 받으면 상당한 비용을 절약할 수 있습니다. 주요 혜택으로는 '즉시 할인(캐시백)', '무이자 할부', '청구 할인' 등이 있습니다. 특히 신규 가입자 대상으로는 1~3만원의 추가 사은품이나 현금 지원금을 제공하는 프로모션도 많아 이를 잘 활용하면 저렴하게 가입이 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "신한카드, 삼성카드, 현대카드 등 카드사별 혜택은 어떻게 다른가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "카드사별로 제휴 보험사 및 이벤트 내용이 상이합니다. 예를 들어 신한카드는 특정 보험사에서 결제 시 청구할인을 제공하고, 삼성카드는 다이렉트 보험 가입 시 캐시백 이벤트를 진행하기도 합니다. 현대카드는 장기 무이자 할부 혜택을 주력으로 내세우며, KB국민카드는 포인트 적립이나 모바일 상품권을 제공합니다. 각 카드사의 '자동차보험료 할인 이벤트' 페이지를 확인하여 본인에게 맞는 혜택을 선택하는 것이 중요합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "자동차보험 카드할인 혜택은 신규 가입자에게만 적용되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "대부분의 캐시백이나 사은품 증정 이벤트는 '신규 고객' 또는 '해당 카드사 직전 6개월 이용 실적 없는 고객'을 대상으로 진행됩니다. 하지만 무이자 할부 혜택은 기존 고객에게도 적용되는 경우가 많습니다. 이벤트 내용을 꼼꼼히 확인하여 본인이 신규 가입 대상인지 확인해야 합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "자동차보험료 비교 견적을 내는 방법은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "자동차보험료 비교 견적은 보험사별로 견적을 받아보는 것이 가장 정확합니다. 네이버나 구글에서 '자동차보험료 비교 견적'을 검색하여 여러 보험사의 견적을 한 번에 비교해 볼 수 있는 플랫폼을 이용하는 것이 편리합니다. 이후 결제 시 카드사 혜택을 추가로 적용하면 됩니다."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- Schema.org Article MarkUp for better content indexing -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://도메인/자동차보험카드할인"
+        "@id": "https://도메인/card-insurance-discount"
       },
-      "headline": "자동차보험 카드할인: 최대 혜택 비교 및 실시간 견적 안내",
-      "image": "https://도메인/card_benefit_image.png",
-      "datePublished": "2025-01-01",
-      "dateModified": "2025-10-23",
+      "headline": "2026년 자동차보험 카드할인 비교 & 추천 | 신규 가입 혜택, 이벤트 총정리",
+      "image": [
+        "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=750&w=1260"
+      ],
       "author": {
-        "@type": "Organization",
-        "name": "대한민국 금융정보센터" 
+        "@type": "Person",
+        "name": "정보 분석 전문가"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "보험 할인 비교 서비스",
+        "name": "자동차보험 할인 가이드",
         "logo": {
           "@type": "ImageObject",
           "url": "https://도메인/logo.png"
         }
       },
-      "description": "다이렉트 자동차보험 카드할인 정보를 한 눈에! 카드사별 무이자 할부, 즉시 할인, 포인트 사용 방법과 자동차보험료 절약 전략을 상세히 안내합니다."
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-03-15",
+      "description": "2026년 최신 자동차보험 카드할인 혜택 정보를 총정리합니다. 주요 카드사별 무이자 할부, 캐시백, 사은품 등 신규 가입자 혜택을 비교하여 가장 저렴하게 자동차보험에 가입하는 방법을 안내합니다."
     }
     </script>
 </head>
 
 <body>
     <header>
-        <p style="text-align: center; color: var(--color-accent); font-weight: 700; margin-bottom: 0;">2025년 최신 정보 업데이트</p>
-        <h1>🔥 자동차보험 카드할인: 최대 혜택 비교 & 실시간 견적💰</h1>
-        <p style="text-align: center; font-size: 1.1rem; color: #555;">신용카드 결제로 **자동차보험료**를 **최대 30만원**까지 절약하는 노하우를 지금 바로 확인하세요!</p>
-        <button class="btn-cta" onclick="location.href='#contact'">최대 할인 견적 1:1 상담 신청</button>
+        <h1>2026년 자동차보험 카드할인 혜택 비교 & 추천</h1>
+        <p>복잡한 자동차보험, 카드 할인으로 똑똑하게 절약하는 방법 A to Z</p>
+        <div style="text-align: center;">
+            <a href="#consultation" class="btn-cta">나에게 맞는 카드 할인 견적 상담 받기</a>
+        </div>
     </header>
 
-    <nav aria-label="메인 메뉴">
-        <section style="background: var(--color-light); padding: 15px; border-radius: 8px; text-align: center;">
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center;">
-                <li style="margin: 0 10px;"><a href="#intro" style="font-weight: 700;">할인 개요</a></li>
-                <li style="margin: 0 10px;"><a href="#card-benefits" style="font-weight: 700;">카드사별 혜택</a></li>
-                <li style="margin: 0 10px;"><a href="#insurance-partner" style="font-weight: 700;">보험사별 제휴</a></li>
-                <li style="margin: 0 10px;"><a href="#faq" style="font-weight: 700;">자주 묻는 질문</a></li>
-                <li style="margin: 0 10px;"><a href="#deep-dive" style="font-weight: 700;">심층 분석 (10,000자)</a></li>
-                <li style="margin: 0 10px;"><a href="#contact" style="font-weight: 700; color: var(--color-accent);">견적 문의</a></li>
+    <section id="table-of-contents">
+        <h2>이 페이지에서 다루는 내용</h2>
+        <nav aria-label="페이지 내 이동">
+            <ul>
+                <li><a href="#discount-overview">자동차보험 카드할인 종류 및 장점</a></li>
+                <li><a href="#card-company-analysis">주요 카드사별 혜택 상세 분석 (신한, 삼성, KB, 현대 등)</a></li>
+                <li><a href="#comparison-table">카드사별 할인 혜택 비교표</a></li>
+                <li><a href="#event-tips">신규 가입자 이벤트 & 사은품 팁</a></li>
+                <li><a href="#consultation">1:1 맞춤형 할인 견적 상담</a></li>
+                <li><a href="#faq">자주 묻는 질문(FAQ) 및 2026년 전망</a></li>
+                <li><a href="#external-resources">신뢰할 수 있는 외부 정보</a></li>
             </ul>
-        </section>
-    </nav>
-
-    <section id="intro">
-        <span id="intro-anchor" class="anchor"></span>
-        <h2>✅ **자동차보험 카드할인**의 모든 것: 왜 중요한가?</h2>
-        <p>매년 갱신해야 하는 **자동차보험료**는 가계 지출에서 무시할 수 없는 큰 부분을 차지합니다. 이때 **신용카드 할인** 혜택을 활용하는 것은 가장 쉽고 효과적인 절약 방법 중 하나입니다. 단순한 **무이자 할부**부터 특정 카드사의 **즉시 할인** 또는 **포인트 사용**까지, **자동차보험 카드할인**은 숨겨진 보물과 같습니다.</p>
-        
-        <h3>다이렉트 자동차보험료 절약의 핵심 전략</h3>
-        <p>최근 많은 소비자들이 이용하는 **다이렉트 자동차보험**은 기본 보험료가 저렴하지만, 여기에 추가로 신용카드를 활용하여 2차 할인을 받는 것이 **자동차보험료 절약**의 핵심입니다. 특히 대형 카드사(삼성, 현대, KB국민, 롯데, 하나 등)가 연말/연초에 제공하는 프로모션을 놓치지 않는 것이 중요합니다.</p>
-        <p style="background: #e6f3ff; padding: 15px; border-radius: 8px; border-left: 5px solid var(--color-primary);">
-            📌 <strong>꿀팁:</strong> 여러 카드사 중 자신의 **주력 신용카드**가 어떤 보험사와 제휴하고 있는지 확인하고, **자동차보험 카드할인** 혜택을 극대화하는 것이 현명한 소비입니다.
-        </p>
+        </nav>
     </section>
 
-    <section id="card-benefits">
-        <span id="card-benefits-anchor" class="anchor"></span>
-        <h2>💳 주요 카드사별 **자동차보험료 카드할인** 혜택 비교 (2025년 기준)</h2>
-        <p>**자동차보험료 카드할인** 혜택은 카드사별, 프로모션 기간별로 상이합니다. 아래 표는 일반적으로 제공되는 핵심 혜택을 정리한 것입니다. 정확한 내용은 해당 카드사 웹사이트를 참조하세요.</p>
-        <table>
+    <section id="discount-overview">
+        <span id="discount-overview-anchor" class="anchor"></span>
+        <h2>자동차보험 카드할인: 왜 중요한가요?</h2>
+        <p>매년 갱신해야 하는 자동차보험료는 가계 지출에서 무시할 수 없는 비중을 차지합니다. 특히 2026년도에는 물가 상승과 보험료 인상 압박으로 인해 많은 운전자들이 저렴한 보험료를 찾고 있습니다. 단순히 최저가 보험사를 찾는 것을 넘어, 결제 시점에 적용되는 카드사의 할인 혜택을 활용하면 예상 비용을 크게 절감할 수 있습니다.</p>
+        <p>많은 소비자들이 "자동차보험료 싼곳"을 찾기 위해 네이버나 구글에서 다이렉트 보험을 비교하지만, 정작 결제 단계에서 놓치는 부분이 바로 카드 할인입니다. 카드사들은 신규 고객 유치와 소비 증진을 위해 매년 10월부터 이듬해 1월까지 자동차보험료 결제 시즌에 맞춰 다양한 프로모션을 진행합니다. 이러한 '이벤트'를 적극적으로 활용한다면, 최소 1만원부터 최대 5만원 이상의 금액을 절약하는 것이 가능합니다.</p>
+
+        <h3>주요 카드 할인 유형 및 장단점</h3>
+        <p>자동차보험 카드할인은 크게 세 가지 유형으로 나뉩니다. 자신의 결제 방식과 카드 실적에 따라 어떤 유형이 유리한지 판단해야 합니다.</p>
+        <ul>
+            <li><strong>즉시 할인(청구 할인) 또는 캐시백:</strong> 보험료 결제 시 일정 비율(예: 1~3%)을 즉시 할인하거나, 결제 후 일정 기간 뒤 현금으로 되돌려주는 방식입니다. 신규 가입 혜택으로 주로 제공되며, 즉시 체감할 수 있는 장점이 있습니다.</li>
+            <li><strong>무이자 할부:</strong> 보험료 전액을 일시불로 납부하기 부담스러울 때 유용합니다. 카드사별로 2~10개월 무이자 할부를 제공하며, 특히 고액의 보험료를 나눠낼 때 이자 부담 없이 결제가 가능합니다.</li>
+            <li><strong>포인트/상품권 증정:</strong> 결제 금액의 일부를 포인트(예: L.Point, KB 포인트리)로 적립해주거나, 백화점 상품권, 주유권 등으로 제공합니다. 현금만큼 유용하게 사용할 수 있습니다.</li>
+        </ul>
+
+        <img src="https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="자동차보험 카드할인 이미지" loading="lazy">
+        <p style="text-align: right; font-size: 0.9em; color: #777;">&copy; Pexels 이미지 (상업적 사용 가능)</p>
+
+        <h3>2026년 자동차보험료 전망 및 카드할인 트렌드</h3>
+        <div class="highlight-box">
+            <p><strong>2026년 전망:</strong> 금융감독원과 보험업계에 따르면, 자동차보험 손해율 개선 노력과 함께 다이렉트 채널의 경쟁 심화로 인해 전반적인 할인 경쟁은 계속될 전망입니다. 특히 카드사들은 다이렉트 보험과의 제휴를 강화하여 온라인 전용 이벤트를 늘리고 있습니다. '신규 가입' 키워드에 맞춰 파격적인 사은품이나 현금 지원을 제공하는 경우가 많아졌습니다.</p>
+            <p><strong>핵심 키워드:</strong> 2026년 트렌드는 '신규 가입 혜택'과 '결제 편의성'입니다. 모바일 결제나 간편 결제 시 추가 할인을 제공하는 이벤트도 늘어날 것으로 예상됩니다.</p>
+        </div>
+    </section>
+
+    <section id="card-company-analysis">
+        <span id="card-company-analysis-anchor" class="anchor"></span>
+        <h2>주요 카드사별 자동차보험 할인 혜택 상세 분석 (2026년 기준)</h2>
+        <p>대한민국의 주요 신용카드 회사들은 자동차보험료 결제 시즌마다 다양한 프로모션을 선보입니다. 각 카드사별 특징과 혜택을 자세히 분석하여 '내돈내산' 후기가 좋은 카드사를 찾아보세요. 아래 내용은 2026년 상반기 기준으로 예상되는 일반적인 혜택이며, 실제 이벤트는 시기에 따라 변동될 수 있습니다.</p>
+
+        <h3>1. 신한카드 (Shinhan Card) - 다이렉트 보험과 제휴 강화</h3>
+        <p>신한카드는 국내 카드업계 1위로, 제휴 보험사가 다양하여 선택의 폭이 넓습니다. 특히 신한카드는 '신규 고객'을 대상으로 파격적인 캐시백 이벤트를 진행하는 경우가 많습니다. "신한카드 자동차보험 신규 가입 혜택"을 검색하면 자세한 정보를 얻을 수 있습니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> 특정 보험사 다이렉트 채널 결제 시 1만원~3만원 캐시백 또는 청구 할인. 무이자 할부 2~6개월 지원.</li>
+            <li><strong>핵심 키워드:</strong> 신한카드 이벤트, 신한카드 무이자 할부, 신한카드 캐시백.</li>
+            <li><strong>유의사항:</strong> 직전 6개월 동안 신한카드 결제 이력이 없어야 하는 '신규 고객' 조건이 붙는 경우가 많으므로 반드시 확인해야 합니다.</li>
+        </ul>
+
+        <h3>2. 삼성카드 (Samsung Card) - 온라인 채널 강점</h3>
+        <p>삼성화재 다이렉트 보험을 중심으로 강력한 할인 혜택을 제공하며, 온라인 채널에서 활발하게 프로모션을 진행합니다. 삼성카드의 경우 '디지털 카드'나 '특정 제휴 카드'를 통해 추가 할인을 제공하는 전략을 주로 사용합니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> 다이렉트 보험사 결제 시 3만원 상당의 주유 상품권 또는 캐시백 제공. 무이자 할부 2~8개월.</li>
+            <li><strong>핵심 키워드:</strong> 삼성카드 자동차보험, 삼성카드 혜택, 삼성카드 이벤트.</li>
+            <li><strong>유의사항:</strong> 삼성카드 생활 요금 납부 실적 등 다른 혜택과 중복 적용 여부를 확인해야 합니다.</li>
+        </ul>
+
+        <h3>3. KB국민카드 (KB Kookmin Card) - 포인트리 적립 및 사은품</h3>
+        <p>KB국민카드는 KB손해보험과 함께 다양한 이벤트를 진행합니다. 특히 'KB 포인트리' 적립을 주력으로 내세워 포인트를 현금처럼 사용할 수 있게 하는 것이 장점입니다. KB국민카드 신규 가입자에게는 스타벅스 상품권이나 네이버페이 상품권을 제공하기도 합니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> KB손해보험 다이렉트 결제 시 최대 3만원 상당의 KB 포인트리 적립. 2~6개월 무이자 할부 지원.</li>
+            <li><strong>핵심 키워드:</strong> KB국민카드 포인트리, KB국민카드 사은품, KB손해보험 다이렉트 할인.</li>
+            <li><strong>유의사항:</strong> 포인트 적립을 선호하는 소비자에게는 최고의 선택지이나, 현금 즉시 할인을 원하는 경우 다른 카드사를 비교해봐야 합니다.</li>
+        </ul>
+
+        <h3>4. 현대카드 (Hyundai Card) - 장기 무이자 할부 및 M포인트</h3>
+        <p>현대카드는 'M포인트'를 활용한 할인 혜택이 주력입니다. 현대해상 다이렉트 보험과의 제휴를 통해 무이자 할부 기간을 최대 10개월까지 제공하는 등 장기 할부에 강점을 보입니다. 현대자동차나 기아자동차 이용 고객에게는 추가 혜택이 있을 수 있습니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> 현대해상 다이렉트 결제 시 장기 무이자 할부(10개월까지) 제공. M포인트 사용 시 추가 할인.</li>
+            <li><strong>핵심 키워드:</strong> 현대카드 M포인트, 현대카드 무이자 할부, 현대해상 다이렉트.</li>
+            <li><strong>유의사항:</strong> M포인트 사용 여부에 따라 혜택이 달라지므로, M포인트 보유 여부를 미리 확인해야 합니다.</li>
+        </ul>
+
+        <h3>5. 롯데카드 (Lotte Card) - 다양한 제휴처와 상품권 제공</h3>
+        <p>롯데카드 역시 롯데손해보험을 비롯해 다양한 보험사와 제휴를 맺고 있습니다. 롯데백화점 상품권이나 L.Point 적립을 통해 혜택을 제공하며, '신규 가입' 이벤트를 통해 현금 지원금을 제공하기도 합니다. 롯데카드 혜택은 네이버 검색 시 "롯데카드 자동차보험 이벤트" 키워드로 쉽게 확인할 수 있습니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> 롯데손해보험 및 제휴 보험사 결제 시 2만원 상당의 모바일 상품권 증정. L.Point 적립 혜택.</li>
+            <li><strong>핵심 키워드:</strong> 롯데카드 L.Point, 롯데카드 사은품, 롯데손해보험 다이렉트.</li>
+        </ul>
+
+        <h3>6. 하나카드 (Hana Card) 및 우리카드 (Woori Card)</h3>
+        <p>하나카드와 우리카드 역시 자동차보험 시즌에 맞춰 무이자 할부 및 캐시백 이벤트를 진행합니다. 하나카드는 해외 결제 혜택과 연계된 프로모션을, 우리카드는 우리은행 금융상품과 연계된 혜택을 종종 선보입니다. 신규 가입 혜택의 경우 경쟁 카드사보다 조건이 관대한 경우가 있으므로 비교해볼 필요가 있습니다.</p>
+        <ul>
+            <li><strong>주요 혜택:</strong> 2~8개월 무이자 할부. 특정 기간 내 결제 시 캐시백 이벤트.</li>
+            <li><strong>핵심 키워드:</strong> 하나카드 무이자, 우리카드 캐시백, 하나카드 자동차보험 이벤트.</li>
+        </ul>
+
+        <h3>7. 기타 카드사 및 서비스</h3>
+        <p>이 외에도 BC카드, 농협카드, 카카오뱅크 체크카드 등도 일정 금액 이상 결제 시 소액 캐시백이나 포인트를 제공합니다. 특히 카카오페이나 네이버페이 등 간편 결제 서비스와 연동하여 추가 할인을 받을 수 있는 방법도 있으니 꼼꼼하게 찾아보세요. '자동차보험 카드할인 혜택'을 비교하는 것이 저렴한 보험료를 찾는 핵심입니다.</p>
+    </section>
+
+    <section id="comparison-table">
+        <span id="comparison-table-anchor" class="anchor"></span>
+        <h2>카드사별 자동차보험 할인 혜택 비교표 (2026년 가상 시뮬레이션)</h2>
+        <p>카드사별로 혜택의 종류와 크기가 다릅니다. 다음은 2026년 가입 시즌을 가정한 주요 카드사별 예상 혜택 비교입니다. 본인의 보험료 규모(평균 80만원 가정)에 따라 가장 유리한 곳을 선택하세요. '싼곳'을 찾기 위한 비교 분석이 필수입니다.</p>
+
+        <table class="comparison-table">
             <thead>
                 <tr>
                     <th>카드사</th>
-                    <th>핵심 **카드할인** 방식</th>
+                    <th>주요 할인 유형</th>
                     <th>무이자 할부 기간</th>
-                    <th>포인트 사용 가능 여부</th>
-                    <th>주요 제휴 보험사</th>
+                    <th>신규 가입 혜택 (예상)</th>
+                    <th>특징</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-label="카드사"><strong>삼성카드</strong></td>
-                    <td data-label="핵심 할인 방식">최대 3만원 즉시 할인 및 캐시백</td>
-                    <td data-label="무이자 할부 기간">최대 2~6개월</td>
-                    <td data-label="포인트 사용 가능 여부">가능 (특정 상품)</td>
-                    <td data-label="주요 제휴 보험사">삼성화재, DB손보, 현대해상</td>
+                    <td>신한카드</td>
+                    <td>캐시백 / 청구 할인</td>
+                    <td>2~6개월</td>
+                    <td>최대 3만원 캐시백</td>
+                    <td>다이렉트 보험 제휴가 많고 신규 고객 조건이 엄격함.</td>
                 </tr>
                 <tr>
-                    <td data-label="카드사"><strong>현대카드</strong></td>
-                    <td data-label="핵심 할인 방식">M포인트 최대 100% 사용</td>
-                    <td data-label="무이자 할부 기간">2~3개월 기본</td>
-                    <td data-label="포인트 사용 가능 여부">가능 (M포인트)</td>
-                    <td data-label="주요 제휴 보험사">KB손보, 롯데손보, 악사손보</td>
+                    <td>삼성카드</td>
+                    <td>캐시백 / 상품권</td>
+                    <td>2~8개월</td>
+                    <td>최대 3만원 상품권</td>
+                    <td>온라인 전용 이벤트가 많고 삼성화재 제휴 혜택이 강함.</td>
                 </tr>
                 <tr>
-                    <td data-label="카드사"><strong>KB국민카드</strong></td>
-                    <td data-label="핵심 할인 방식">최대 2~3만원 캐시백 프로모션</td>
-                    <td data-label="무이자 할부 기간">최대 10개월 (행사 시)</td>
-                    <td data-label="포인트 사용 가능 여부">가능 (포인트리)</td>
-                    <td data-label="주요 제휴 보험사">KB손보, 캐롯손보</td>
+                    <td>KB국민카드</td>
+                    <td>포인트리 적립</td>
+                    <td>2~6개월</td>
+                    <td>최대 3만 포인트리 적립</td>
+                    <td>KB손해보험 제휴 혜택이 좋으며, 포인트 사용 편리.</td>
                 </tr>
                 <tr>
-                    <td data-label="카드사"><strong>하나카드</strong></td>
-                    <td data-label="핵심 할인 방식">청구 할인 또는 상품권 증정</td>
-                    <td data-label="무이자 할부 기간">최대 5개월</td>
-                    <td data-label="포인트 사용 가능 여부">가능 (하나머니)</td>
-                    <td data-label="주요 제휴 보험사">메리츠화재, 흥국화재</td>
+                    <td>현대카드</td>
+                    <td>무이자 할부 / M포인트</td>
+                    <td>최대 10개월</td>
+                    <td>M포인트 추가 사용 가능</td>
+                    <td>장기 무이자 할부와 M포인트 활용에 강점.</td>
+                </tr>
+                <tr>
+                    <td>롯데카드</td>
+                    <td>상품권 / L.Point</td>
+                    <td>2~6개월</td>
+                    <td>최대 2만원 상품권</td>
+                    <td>다양한 제휴처와 L.Point 활용도가 높음.</td>
+                </tr>
+                <tr>
+                    <td>하나카드</td>
+                    <td>캐시백 / 무이자 할부</td>
+                    <td>2~8개월</td>
+                    <td>최대 2만원 캐시백</td>
+                    <td>해외 결제 등 기타 혜택 연계 가능성 있음.</td>
                 </tr>
             </tbody>
         </table>
-        <button class="btn-cta" onclick="location.href='#contact'">나에게 맞는 카드 할인 혜택 찾기</button>
+        <div class="highlight-box">
+            <p><strong>전문가 팁:</strong> 카드사별로 이벤트 기간이 상이하므로, 반드시 보험 가입 시점에 '현재 진행 중인 이벤트'를 확인해야 합니다. 신규 가입 혜택이 더 크다면, 기존 카드를 해지하고 재가입하는 것도 고려해볼 수 있습니다. 다만 카드사별 '직전 6개월 실적' 조건을 반드시 확인해야 합니다.</p>
+        </div>
+
+        <h3>자동차보험료 할인율 통계 (2026년 예상)</h3>
+        <p>일반적으로 카드할인 혜택은 보험료의 평균 3%~5% 수준에서 형성됩니다. 아래 그래프는 2026년도 카드사별 자동차보험료 할인 예상치를 보여줍니다. (가상 데이터 기반)</p>
+        <div class="graph-placeholder">
+            <p><strong>그래프 Placeholder:</strong> 2026년 카드사별 자동차보험 할인율(%) 비교</p>
+            <!-- 실제 그래프 삽입 위치 -->
+        </div>
     </section>
-    
-    <section id="insurance-partner">
-        <span id="insurance-partner-anchor" class="anchor"></span>
-        <h2>🤝 보험사별 **다이렉트 자동차보험 카드할인** 특별 제휴</h2>
-        <p>대형 보험사들은 특정 카드사와의 독점 제휴를 통해 추가적인 **자동차보험 카드할인** 프로모션을 진행합니다. 이를 잘 활용하면 **자동차보험료**를 크게 낮출 수 있습니다.</p>
+
+    <section id="event-tips">
+        <span id="event-tips-anchor" class="anchor"></span>
+        <h2>자동차보험 신규 가입자 혜택 및 이벤트 꿀팁</h2>
+        <p>카드사들은 신규 고객 유치를 위해 파격적인 '사은품'이나 '현금 지원금' 이벤트를 진행합니다. 이 혜택을 잘 활용하면 자동차보험료를 저렴하게 납부할 수 있습니다.</p>
+
+        <h3>1. '신규 가입'의 조건 이해하기</h3>
+        <p>카드사 이벤트에서 말하는 '신규 가입'은 단순히 해당 카드를 처음 발급받는 것만을 의미하지 않습니다. 대부분의 카드사는 "직전 6개월(또는 1년) 동안 해당 카드사 이용 실적이 없는 고객"을 신규 고객으로 간주합니다. 이 조건을 만족하는지 확인해야 현금 지원이나 사은품 혜택을 받을 수 있습니다. 만약 최근에 카드 사용 내역이 있다면, 해당 카드사의 다른 카드를 발급받거나 이벤트 기간이 끝날 때까지 기다려야 합니다.</p>
+
+        <h3>2. 네이버, 구글, 유튜브에서 '이벤트' 검색하기</h3>
+        <p>카드사들은 다양한 채널을 통해 이벤트를 홍보합니다. 네이버 웹사이트 영역이나 구글 검색 결과뿐만 아니라, 유튜브나 인스타그램, 페이스북 등의 SNS 채널을 통해서도 이벤트 정보를 얻을 수 있습니다. 특히 유튜브에서는 '카드할인 후기'나 '내돈내산 팁' 등의 키워드로 검색하면 실질적인 정보를 얻을 수 있습니다.</p>
+
+        <h3>3. 자동차보험료 비교 견적 사이트 활용</h3>
+        <p>자동차보험료는 운전 경력, 차종, 사고 이력 등 수많은 변수에 따라 달라집니다. 따라서 카드할인 혜택을 적용하기 전에, 여러 보험사의 견적을 비교하는 것이 우선입니다. '보험다모아' 등 정부가 운영하는 사이트나 민간 비교 견적 사이트를 통해 보험사별 가격을 비교한 후, 최종 결제 시점에 가장 많은 할인 혜택을 제공하는 카드를 선택하세요.</p>
+
+        <img src="https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="자동차보험료 절약 팁" loading="lazy">
+
+        <h3>4. 자주 묻는 질문(FAQ)</h3>
         <ul>
-            <li><strong>삼성화재 다이렉트:</strong> 주로 삼성카드와의 제휴가 강력하며, 일정 금액 이상 결제 시 **즉시 할인**을 제공하는 경우가 많습니다.</li>
-            <li><strong>현대해상 다이렉트:</strong> 다양한 카드사와의 제휴를 통해 **무이자 할부** 혜택 기간을 길게 제공하는 것이 특징입니다.</li>
-            <li><strong>KB손해보험 다이렉트:</strong> KB국민카드와 연계하여 **KB국민카드 할인** 및 포인트리 사용을 통한 **보험료 절감**에 집중합니다.</li>
-            <li><strong>DB손해보험 다이렉트:</strong> 특정 기간에 한해 신규 고객 대상 **캐시백** 이벤트를 진행하여 **자동차보험 카드할인** 효과를 높입니다.</li>
-        </ul>
-        <p style="text-align: right; margin-top: 10px; font-size: 0.9rem; color: #777;">* 상기 정보는 일반적인 경향이며, 이사 전 반드시 공식 웹사이트에서 최종 확인이 필요합니다.</p>
-    </section>
-
-    <section id="deep-dive">
-        <span id="deep-dive-anchor" class="anchor"></span>
-        <h2>🔍 **자동차보험료 카드할인** 심층 분석 및 절약 백서 (정보성 텍스트 10,000자 이상)</h2>
-        <p>이 섹션은 **자동차보험 카드할인**과 관련하여 소비자들이 알아야 할 모든 심층 정보를 다룹니다. **다이렉트 자동차보험료**의 구성 요소부터 시작해, **카드사별 혜택 비교**의 중요성, 그리고 **무이자 할부**와 **포인트 사용**을 통한 **최대 할인** 시뮬레이션까지 상세히 안내합니다. 이 방대한 정보는 검색자에게 높은 가치를 제공하여 Naver 웹사이트 영역 상위 노출 및 체류 시간 증대에 기여할 것입니다.</p>
-
-        <h3>1. **자동차보험 카드할인**의 법적 이해와 종류</h3>
-        <p>**자동차보험료 카드할인**은 금융위원회의 감독 하에 각 보험사와 카드사 간의 제휴를 통해 제공됩니다. 이는 소비자의 보험료 부담을 낮추기 위한 합법적인 마케팅 수단입니다. 할인 유형은 크게 세 가지로 분류됩니다: **1) 즉시 할인(청구 할인)**, **2) 무이자 할부**, **3) 카드 포인트 사용**입니다. 특히 **다이렉트 자동차보험 카드할인**의 경우, 설계사 수수료가 빠진 만큼 카드사 제휴 혜택이 더욱 강화되는 추세입니다.</p>
-        
-        <h3>2. **신용카드**를 통한 **자동차보험료 절약** 전략: 카드사별 집중 분석</h3>
-        <h4>2.1. **현대카드 자동차보험** 결제 시 M포인트 활용 극대화</h4>
-        <p>**현대카드 자동차보험** 결제 시에는 M포인트가 가장 큰 **자동차보험 카드할인** 수단입니다. 연간 납부하는 보험료의 최대 30~50%까지 포인트로 결제할 수 있는 프로모션을 활용하면 현금 지출 없이 보험 갱신이 가능합니다. 이 방법은 **자동차보험료 비교** 시 실질적인 비용 절감 효과가 매우 큽니다. (후략)</p>
-        
-        <p>... **KB국민카드 할인**을 받기 위한 전월 실적 조건 확인, **삼성카드**의 캐시백 프로그램 이용 방법, **하나카드**의 라이프스타일 혜택 연계 등 상세 정보를 포함합니다. **자동차보험료**를 낮추는 가장 효율적인 방법으로 **자동차보험 카드할인**은 필수적이며, 특히 자동차를 2대 이상 보유한 가구에서는 **패밀리 할인**과 함께 카드 혜택을 중복 적용하는 것이 중요합니다. **자동차보험 카드할인** 혜택을 누리기 위해 무분별하게 신규 카드를 발급받기보다는, 기존에 보유한 카드의 **할인 혜택**을 면밀히 검토해야 합니다. ...</p>
-        <p>... (약 9,000자 분량의 **자동차보험료 카드할인**, **다이렉트 자동차보험 카드할인**, **무이자 할부**, **신용카드 포인트 사용** 등 관련 상세 정보 및 사례 연구, 소비자 유의사항, 갱신 시기별 할인 전략 등이 추가로 삽입되어 10,000자를 충족해야 합니다.) ...</p>
-
-        <h3>3. **자동차보험 카드할인** 관련 공인된 신뢰성 정보 출처</h3>
-        <p>정확한 정보와 정책 확인을 위해 아래 공인된 기관의 정보를 참고하시기 바랍니다.</p>
-        <ol>
-            <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS)</a> – 보험 상품 및 소비자 유의사항 정책 확인.</li>
-            <li><a href="https://www.kisa.or.kr/" target="_blank">여신금융협회 (KLFA)</a> – 카드사별 무이자 할부 및 카드 이용약관 확인.</li>
-            <li><a href="https://www.knia.or.kr/" target="_blank">손해보험협회 (KNIA)</a> – 자동차보험 상품 비교 및 공시 자료 확인.</li>
-            <li><a href="https://www.namu.wiki/w/자동차보험" target="_blank">나무위키 - 자동차보험</a> – 자동차보험의 일반적인 정의 및 배경 지식 습득.</li>
-            <li><a href="https://www.data.go.kr/" target="_blank">공공데이터포털</a> – 자동차 등록 및 보험 관련 통계 자료 확인.</li>
-        </ol>
-        
-        </section>
-
-    <section id="faq">
-        <span id="faq-anchor" class="anchor"></span>
-        <h2>❓ **자주 묻는 질문**: **자동차보험 카드할인** Q&A</h2>
-        <ul style="list-style: disc;">
-            <li>**Q:** **다이렉트 자동차보험 카드할인**은 일반 보험과 동일하게 적용되나요?</li>
-            <li>**A:** 네, 대부분의 **다이렉트 자동차보험**도 카드사 제휴 혜택(무이자 할부, 즉시 할인)이 동일하게 적용됩니다. 오히려 온라인 채널 특성상 추가 프로모션이 더 많은 경우가 있습니다.</li>
-            <li>**Q:** **자동차보험료 카드할인**을 받으려면 신규 카드를 발급받아야 하나요?</li>
-            <li>**A:** 필수는 아닙니다. 기존 보유한 카드 중 제휴 혜택이 좋은 카드를 활용하거나, 신규 발급 시 제공되는 **자동차보험** 전용 혜택을 비교하여 선택하는 것이 좋습니다.</li>
-            <li>**Q:** **무이자 할부**와 **즉시 할인** 중 어떤 것이 더 유리한가요?</li>
-            <li>**A:** 보험료 금액과 개인의 현금 유동성에 따라 다릅니다. 고액의 경우 **무이자 할부**가 현금 흐름에 좋으며, 소액이거나 현금 결제가 용이하다면 **즉시 할인(캐시백)**이 실질적인 **자동차보험료 절약**에 더 유리할 수 있습니다.</li>
+            <li><strong>Q: 무이자 할부를 할 경우에도 캐시백을 받을 수 있나요?</strong><br>A: 카드사별로 다릅니다. 대부분의 경우 무이자 할부와 캐시백은 중복 적용되지 않습니다. 이벤트 안내를 꼼꼼히 확인해야 합니다.</li>
+            <li><strong>Q: 자동차보험료 예상 금액을 미리 알 수 있나요?</strong><br>A: 네, 다이렉트 보험사 웹사이트에서 차량 정보 입력만으로 예상 견적을 쉽게 확인할 수 있습니다. 카드할인은 이 예상 금액에서 추가로 절약하는 방식입니다.</li>
+            <li><strong>Q: 카드 신규 발급 시 사은품을 받는 조건은 무엇인가요?</strong><br>A: 신규 발급 후 일정 기간 내(보통 1~3개월)에 일정 금액 이상(예: 10만원)을 사용해야 사은품이 지급되는 경우가 많습니다. 사은품 대신 현금 지원을 받는 조건도 있으므로 '가입' 전에 확인하세요.</li>
         </ul>
     </section>
 
-    <section id="contact">
-        <span id="contact-anchor" class="anchor"></span>
-        <h2>🚀 **실시간 최대 할인 견적 상담** 문의</h2>
-        <p>가장 효율적인 **자동차보험 카드할인** 혜택을 찾고 계십니까? 아래 정보를 입력해주시면 전문 상담원이 **카드사별 혜택 비교**를 통해 최적의 **자동차보험료 절약** 방법을 안내해 드립니다. 입력 항목이 많을수록 정확한 분석이 가능하며, 이는 고객님의 체류 시간을 늘려 SEO에 긍정적인 영향을 미칩니다.</p>
-
-        <form action="/submit-quote" method="POST" style="max-width:700px; margin:auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa;">
-            
+    <section id="consultation" class="form-section">
+        <span id="consultation-anchor" class="anchor"></span>
+        <h2>1:1 맞춤형 카드할인 견적 상담 신청</h2>
+        <p>복잡한 카드사별 할인 정보를 일일이 확인하기 어렵다면, 전문 상담사를 통해 나에게 가장 유리한 할인 혜택을 확인하세요. 2026년 최신 정보를 바탕으로 가장 저렴한 견적과 카드할인 정보를 비교 분석해 드립니다.</p>
+        <form action="/submit" method="POST" style="max-width: 700px; margin: auto;">
             <div class="form-group">
+                <legend>기본 정보 입력 (필수)</legend>
                 <label for="name">이름<span style="color:red;">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="본인 명의" />
-            </div>
+                <input type="text" id="name" name="name" required placeholder="이름을 입력해주세요" />
 
-            <div class="form-group">
                 <label for="phone">연락처<span style="color:red;">*</span></label>
-                <input type="tel" id="phone" name="phone" required placeholder="010-XXXX-XXXX" pattern="[0-9\-]+" />
-            </div>
+                <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
 
-            <div class="form-group">
-                <label for="move-type">현재 가입된 보험사<span style="color:red;">*</span></label>
-                <select id="insurance-company" name="insurance_company" required>
+                <label for="contact-time">상담 희망 시간대<span style="color:red;">*</span></label>
+                <select id="contact-time" name="contact_time" required>
                     <option value="">선택하세요</option>
-                    <option value="삼성화재">삼성화재 다이렉트</option>
-                    <option value="현대해상">현대해상 다이렉트</option>
-                    <option value="KB손보">KB손해보험 다이렉트</option>
-                    <option value="DB손보">DB손해보험 다이렉트</option>
-                    <option value="기타">기타 보험사</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="annual-premium">연간 **자동차보험료** 수준 (대략)</label>
-                <select id="annual-premium" name="annual_premium">
-                    <option value="">선택하세요</option>
-                    <option value="50미만">50만원 미만</option>
-                    <option value="50-80">50만원 ~ 80만원</option>
-                    <option value="80-120">80만원 ~ 120만원</option>
-                    <option value="120이상">120만원 이상</option>
+                    <option value="오전 9시~12시">오전 9시~12시</option>
+                    <option value="오후 12시~3시">오후 12시~3시</option>
+                    <option value="오후 3시~6시">오후 3시~6시</option>
+                    <option value="오후 6시 이후">오후 6시 이후</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="current-card">보유 중인 신용카드사 (복수 선택 가능)</label>
-                <textarea id="current-card" name="current_card" rows="3" placeholder="예: 삼성카드, KB국민카드, 현대카드"></textarea>
+                <legend>자동차 및 보험 정보 입력</legend>
+                <label for="car-model">차량 모델명 (예: 2024년 쏘나타)</label>
+                <input type="text" id="car-model" name="car_model" placeholder="차종 및 연식을 입력해주세요" />
+
+                <label>현재 가입된 보험사 (있다면)</label><br />
+                <input type="text" id="current-insurer" name="current_insurer" placeholder="예: 삼성화재 다이렉트" />
+
+                <label>보험 갱신 예정일</label>
+                <input type="text" id="renewal-date" name="renewal_date" placeholder="예: 2026년 5월 1일" />
+
+                <label>현재 카드사 이용 실적 여부<span style="color:red;">*</span></label>
+                <div>
+                    <input type="radio" id="new-card-yes" name="new_card_condition" value="신규 발급 가능(직전 6개월 실적 없음)" required />
+                    <label for="new-card-yes">신규 발급 가능 (직전 6개월 실적 없음)</label><br />
+                    <input type="radio" id="new-card-no" name="new_card_condition" value="기존 고객 (카드 이용 실적 있음)" required />
+                    <label for="new-card-no">기존 고객 (카드 이용 실적 있음)</label>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="move-date">보험 만기(갱신) 예정일</label>
-                <input type="date" id="move-date" name="move_date" style="width:100%;" />
+                <legend>희망 할인 유형 선택 (중복 선택 가능)</legend>
+                <input type="checkbox" id="cashback" name="preferred_discount[]" value="캐시백/현금 지원" />
+                <label for="cashback">캐시백/현금 지원</label><br />
+                <input type="checkbox" id="interest-free" name="preferred_discount[]" value="무이자 할부" />
+                <label for="interest-free">무이자 할부</label><br />
+                <input type="checkbox" id="gift-card" name="preferred_discount[]" value="상품권/사은품" />
+                <label for="gift-card">상품권/사은품</label><br />
+                <input type="checkbox" id="lowest-price" name="preferred_discount[]" value="최저가 보험사 비교" />
+                <label for="lowest-price">최저가 보험사 비교</label>
             </div>
 
             <div class="form-group">
-                <label for="message">최대 **자동차보험 카드할인**을 위한 요청 사항</label>
-                <textarea id="message" name="message" rows="5" placeholder="예: 무이자 할부 10개월 희망, 포인트 사용 문의, 특정 카드사 혜택 집중 비교 요청 등"></textarea>
+                <label for="message">추가 문의 사항 (필요한 카드사, 원하는 혜택 등)</label>
+                <textarea id="message" name="message" rows="5" placeholder="예: 신한카드나 삼성카드 위주로 비교해보고 싶습니다."></textarea>
             </div>
 
-            <button type="submit" class="btn-cta">최적 **자동차보험 카드할인** 문의하기</button>
+            <div style="text-align: center;">
+                <button type="submit" class="btn-cta">상담 신청서 제출</button>
+            </div>
         </form>
     </section>
 
+    <section id="faq">
+        <span id="faq-anchor" class="anchor"></span>
+        <h2>자동차보험 카드할인 관련 추가 정보 및 FAQ</h2>
+        <p>많은 소비자들이 궁금해하는 질문들을 모아 답변해 드립니다. '평균' 할인율, '가입' 시 주의사항 등 필수 정보를 확인하세요.</p>
+
+        <h3>Q: 자동차보험료 예상 비용을 줄이는 다른 방법은 없나요?</h3>
+        <p>A: 카드할인 외에도 자동차보험료를 절감할 수 있는 방법은 많습니다. 대표적으로 '운전자 범위 한정', '주행거리 마일리지 할인', '블랙박스 할인', '자녀 할인', '안전운전 습관 TMAP 할인' 등이 있습니다. 이러한 할인 특약들을 최대한 활용하여 보험료의 '예상 금액'을 낮춘 후, 카드할인을 적용하면 더욱 큰 절감 효과를 볼 수 있습니다. 카드할인은 결제 단계의 '추가 할인'입니다.</p>
+
+        <h3>Q: 신규 가입 혜택을 받기 위해 카드 발급 후 얼마나 사용해야 하나요?</h3>
+        <p>A: 대부분 카드사 이벤트는 '신규 발급 후 1개월 이내 얼마 이상 사용' 또는 '최초 이용 금액 얼마 이상' 등의 조건을 내겁니다. 예를 들어, 신한카드는 10만원 이상 결제 시, 롯데카드는 15만원 이상 결제 시 캐시백이나 상품권을 지급하는 이벤트를 진행하기도 합니다. '혜택'을 받으려면 조건을 정확히 숙지해야 합니다.</p>
+
+        <h3>Q: 카드할인을 적용할 때 장단점은 무엇인가요?</h3>
+        <p>A: <strong>장점:</strong> 현금 지원, 상품권, 무이자 할부 등으로 결제 부담을 줄일 수 있습니다. '저렴한곳'을 찾는 소비자에게 실질적인 '비용' 절감 효과를 제공합니다. <strong>단점:</strong> 신규 고객 조건이 까다롭거나, 다른 할인 혜택(예: 기존 카드 혜택)과 중복 적용이 안 될 수 있습니다. 신규 발급 시 신용 점수에 영향을 줄 수 있습니다.</p>
+
+        <h3>Q: '함께 많이 찾는' 키워드: 다이렉트 보험과 비교하면?</h3>
+        <p>A: '자동차보험 다이렉트'는 오프라인 대비 약 10~20% 저렴한 '가격'이 강점입니다. 여기에 카드할인을 추가하면 '총 비용'을 더욱 줄일 수 있습니다. 다이렉트 보험사들은 카드사와의 제휴를 통해 '신규 가입' 이벤트를 활발하게 진행하고 있으므로, 다이렉트 보험사 견적을 먼저 확인하는 것이 좋습니다.</p>
+    </section>
+
+    <section id="external-resources">
+        <span id="external-resources-anchor" class="anchor"></span>
+        <h2>신뢰할 수 있는 외부 정보 및 참고 자료</h2>
+        <p>자동차보험 및 금융 정보는 신뢰할 수 있는 기관의 자료를 참고하는 것이 중요합니다. 아래는 관련 정보를 확인할 수 있는 주요 외부 사이트입니다.</p>
+        <ul>
+            <li> <strong>보험다모아 (금융감독원):</strong> <a href="https://www.e-insmarket.or.kr/" target="_blank">https://www.e-insmarket.or.kr/</a> - 보험료 비교 및 상품 정보를 확인할 수 있는 공식 채널입니다.</li>
+            <li> <strong>금융감독원 보도자료:</strong> <a href="https://www.fss.or.kr/" target="_blank">https://www.fss.or.kr/</a> - 보험료 인상 및 제도 변경 관련 공식 자료를 확인할 수 있습니다.</li>
+            <li> <strong>나무위키 - 자동차보험:</strong> <a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98" target="_blank">https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98</a> - 자동차보험의 정의, 역사, 할인 특약 등 광범위한 정보를 참고할 수 있습니다.</li>
+            <li> <strong>각 카드사 공식 홈페이지:</strong> 신한카드, 삼성카드, 현대카드 등 각 카드사 공식 홈페이지에서 실시간 이벤트 정보를 확인하는 것이 가장 정확합니다.</li>
+            <li> <strong>한국소비자원:</strong> <a href="https://www.kca.go.kr/" target="_blank">https://www.kca.go.kr/</a> - 금융 상품 이용 후기 및 소비자 피해 사례를 확인할 수 있습니다.</li>
+        </ul>
+    </section>
+
+  
+
+	
 
 	
 <style>
